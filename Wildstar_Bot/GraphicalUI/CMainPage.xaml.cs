@@ -50,7 +50,7 @@ namespace Wildstar_Bot.GraphicalUI
         {
             if (process == null)
                 return;
-            Keyboard kb = new Keyboard(process);
+            VirtualKeyboard kb = new VirtualKeyboard(process);
             kb.Send(Key.A);
         }
     }

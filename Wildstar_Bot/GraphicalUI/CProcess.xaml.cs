@@ -32,7 +32,7 @@ namespace Wildstar_Bot.GraphicalUI
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             lstProcesses.Items.Clear();
-            processlist = Process.GetProcessesByName("notepad");
+            processlist = Process.GetProcessesByName("wildstar64");
             foreach (Process p in processlist)
             {
                 lstProcesses.Items.Add(p.Id + "\t[" + p.ProcessName + "]");

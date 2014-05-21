@@ -1,0 +1,8 @@
+﻿<Window x:Class="Wildstar_Bot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Wildstar Bot" Height="360" Width="520">
+    <Grid>
+        
+    </Grid>
+</Window>

@@ -78,12 +78,12 @@
     <Compile Include="GraphicalUI\CMainPage.xaml.cs">
       <DependentUpon>CMainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\ISwitchable.cs" />
+    <Compile Include="GraphicalUI\Interfaces\ISwitchable.cs" />
     <Compile Include="GraphicalUI\PageController.cs" />
     <Compile Include="GraphicalUI\CProcess.xaml.cs">
       <DependentUpon>CProcess.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Enums\StateMessage.cs" />
+    <Compile Include="GraphicalUI\Enums\StateMessage.cs" />
     <Compile Include="WaypointSystem.cs" />
     <Page Include="GraphicalUI\CAbout.xaml">
       <SubType>Designer</SubType>
@@ -93,7 +93,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GraphicalUI\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -102,7 +102,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Keyboard.cs" />
-    <Compile Include="GraphicalUI\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

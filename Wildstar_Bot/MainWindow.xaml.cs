@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
+using Wildstar_Bot.GraphicalUI;
 
 namespace Wildstar_Bot
 {
@@ -21,35 +21,37 @@ namespace Wildstar_Bot
     /// </summary>
     public partial class MainWindow : Window
     {
-        Process process;
-
         public MainWindow()
         {
             InitializeComponent();
+            PageController.registerSwitcher(this);
+            
+            //Register-Part
+            PageController.registerUserController(new Wildstar_Bot.GraphicalUI.CMainPage(), "MainPage");
+            PageController.registerUserController(new Wildstar_Bot.GraphicalUI.CAbout(), "About");
+            PageController.registerUserController(new Wildstar_Bot.GraphicalUI.CProcess(), "Process");
 
+            //Call MainPage
+            PageController.Switch(typeof(Wildstar_Bot.GraphicalUI.CMainPage));// or as PageController.Switch("MainPage");
         }
 
-        private void btnProcess_Click(object sender, RoutedEventArgs e)
+        public void Navigate(UserControl newPage)
         {
-            lblProcess.Content = "";
-            frmProcess frmp = new frmProcess();
-            frmp.WindowStartupLocation = this.WindowStartupLocation;
-            frmp.setProcessEvent += new ProcessEventHandler(Process_setProcessEvent);
-            frmp.ShowDialog();
+            this.Content = newPage;
         }
 
-        void Process_setProcessEvent(Process p)
+        public void Navigate(UserControl newPage, object data, StateMessage msg)
         {
-            lblProcess.Content = p.Id.ToString();
-            process = p;
-        }
+            this.Content = newPage;
+            ISwitchable i = newPage as ISwitchable;
 
-        private void btnSend_Click(object sender, RoutedEventArgs e)
-        {
-            if (process != null)
+            if (i != null)
             {
-                Keyboard kb = new Keyboard(process);
-                kb.Send(Key.A);
+                i.UtilizeState(data, msg);
+            }
+            else
+            {
+                throw new ArgumentException("NewPage is not Switchable!");
             }
         }
     }

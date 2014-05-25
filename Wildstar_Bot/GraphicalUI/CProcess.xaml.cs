@@ -19,17 +19,26 @@ namespace Wildstar_Bot.GraphicalUI
     /// <summary>
     /// Interaction logic for Process.xaml
     /// </summary>
-    public partial class CProcess : UserControl
+    public partial class CProcess : UserControl, ISwitchable
     {
         private Process[] processlist;
 
         public CProcess()
         {
             InitializeComponent();
-            btnRefresh_Click(null, null);
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshProcessList();
+        }
+
+        private void btnSet_Click(object sender, RoutedEventArgs e)
+        {
+            PageController.Switch(typeof(CMainPage),StateMessage.CProcess_CMainPage_setProcess, processlist[lstProcesses.SelectedIndex]);
+        }
+
+        private void RefreshProcessList()
         {
             lstProcesses.Items.Clear();
             processlist = Process.GetProcessesByName("wildstar64");
@@ -39,9 +48,14 @@ namespace Wildstar_Bot.GraphicalUI
             }
         }
 
-        private void btnSet_Click(object sender, RoutedEventArgs e)
+        public void UtilizeState(object data, StateMessage msg)
         {
-            PageController.Switch("MainPage", processlist[lstProcesses.SelectedIndex]);
+            switch (msg)
+            {
+                case StateMessage.CMainPage_CProcess_RefreshProcessList:
+                    RefreshProcessList();
+                    break;
+            }
         }
     }
 }

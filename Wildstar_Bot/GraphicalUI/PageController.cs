@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wildstar_Bot.GraphicalUI;
 
-namespace Wildstar_Bot
+namespace Wildstar_Bot.GraphicalUI
 {
     class PageController
     {
@@ -59,12 +59,12 @@ namespace Wildstar_Bot
             }
         }
 
-        public static void Switch(string name, object state)
+        public static void Switch(string name, StateMessage msg, object data)
         {
             UserControl uc;
             if (pages.TryGetValue(name, out uc))
             {
-                Switch(uc,state);
+                Switch(uc, msg, data);
             }
             else
             {
@@ -85,12 +85,12 @@ namespace Wildstar_Bot
             }
         }
 
-        public static void Switch(Type type, object state)
+        public static void Switch(Type type, StateMessage msg, object data)
         {
             UserControl uc;
             if (pagec.TryGetValue(type, out uc))
             {
-                Switch(uc,state);
+                Switch(uc, msg, data);
             }
             else
             {
@@ -103,9 +103,9 @@ namespace Wildstar_Bot
             pageSwitcher.Navigate(newPage);
         }
 
-        public static void Switch(UserControl newPage, object state)
+        public static void Switch(UserControl newPage, StateMessage msg, object data)
         {
-            pageSwitcher.Navigate(newPage, state);
+            pageSwitcher.Navigate(newPage, data, msg);
         }
     }
 

@@ -35,7 +35,7 @@ namespace Wildstar_Bot.GraphicalUI
 
         private void Process_Click(object sender, RoutedEventArgs e)
         {
-            PageController.Switch(typeof(CProcess));
+            PageController.Switch(typeof(CProcess), StateMessage.CMainPage_CProcess_RefreshProcessList, null);
         }
 
         public void UtilizeState(object data, StateMessage msg)
@@ -43,6 +43,8 @@ namespace Wildstar_Bot.GraphicalUI
             switch (msg)
             {
                 case StateMessage.CProcess_CMainPage_setProcess:
+                    this.process = (Process)data;
+                    Console.WriteLine(process.MainWindowTitle + "\nPID: " + process.Id + "\nHWND: " + process.MainWindowHandle);
                     break;
             }
         }
@@ -50,9 +52,11 @@ namespace Wildstar_Bot.GraphicalUI
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             if (process == null)
-                return;
+                throw new ArgumentException("No Process");
+
             VirtualKeyboard kb = new VirtualKeyboard(process);
-            kb.Send(Key.A);
+            kb.Send(Key.A,10);
+            kb.Send(13);
         }
     }
 }

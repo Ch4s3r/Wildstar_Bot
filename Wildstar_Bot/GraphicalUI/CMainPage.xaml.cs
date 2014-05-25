@@ -38,11 +38,12 @@ namespace Wildstar_Bot.GraphicalUI
             PageController.Switch(typeof(CProcess));
         }
 
-        public void UtilizeState(object state)
+        public void UtilizeState(object data, StateMessage msg)
         {
-            if (state.GetType().Equals(typeof(Process)))
+            switch (msg)
             {
-                process = (Process)state;
+                case StateMessage.CProcess_CMainPage_setProcess:
+                    break;
             }
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wildstar_Bot.GraphicalUI;
 
 namespace Wildstar_Bot
 {
@@ -108,8 +109,5 @@ namespace Wildstar_Bot
         }
     }
 
-    public interface ISwitchable
-    {
-        void UtilizeState(object state);
-    }
+
 }

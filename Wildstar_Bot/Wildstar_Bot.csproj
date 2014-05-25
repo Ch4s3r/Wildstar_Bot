@@ -78,10 +78,12 @@
     <Compile Include="GraphicalUI\CMainPage.xaml.cs">
       <DependentUpon>CMainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ISwitchable.cs" />
     <Compile Include="GraphicalUI\PageController.cs" />
     <Compile Include="GraphicalUI\CProcess.xaml.cs">
       <DependentUpon>CProcess.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\StateMessage.cs" />
     <Compile Include="WaypointSystem.cs" />
     <Page Include="GraphicalUI\CAbout.xaml">
       <SubType>Designer</SubType>
